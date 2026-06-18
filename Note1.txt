@@ -1,0 +1,68 @@
+Projet: Gestion de production des parfums
+
+Idea1: Gestion de stade M
+ - Entité1: Spectateur
+ - Entité2: Match
+
+Idea2: Gestion de Cinéma
+ - Entité1: Film
+ - Entité2: Salle
+
+Idea3: Gestion de Clinique O
+ - Entité1: Rendez-vous
+ - Entité2: Patient
+
+(2)Idea4: Gestion d'aéroport M O
+ - Entité1: Vol
+ - Entité2: Voyageur
+
+Idea5: Gestion de hôtel
+ - Entité1: Chambre
+ - Entité2: Réservation(client)
+--------------------------------------------------------
+(1)Idea6: Gestion de Production de parfum MO [Validée]
+ - Entité1: Ingrédient
+ - Entité2: Client
+
+ * Entité: Client
+    - Nom
+    - Prénom
+    - Id
+    - Adresse
+    - Téléphone (email)
+    - Commande(description)
+    - Historique de client X
+    - Date_Commande
+    - Date_Livraison
+    - paiement
+    - Rating (ac)
+    - Comment (ac)
+
+ * Entité: Ingrédient
+    - Id
+    - Nom
+    - Type
+    - Quantité
+    - Disponibilité
+    - Prix
+
+Design (entité) (ac)
+
+dataBase:
+3 tables:
+  - Client(id, nom, prenom, adresse, email, paiement, commentaire)
+  - Commande(id[client], id[cmd], nombtr_ingrs, montant_total, date_cmd, date_liv)
+  - Ingredient(id[cmd], id[ingr], nom, type, quantite, qualite, disponibilite, prix)
+
+
+FLORAL, BOISEE, AGRUME, EPICE, RESINE_BAUME, RACINE_MOUSSE,
+    ANIMAL, ;
+
+famille d'ingrs -> classes qui hérite de Ingredient
+des enums pour chaque famille
+des interfaces (csts pour le calcul de prix + prototype de methodes)
+
+
+----------------
+stock de parfums(opt)
+----------------

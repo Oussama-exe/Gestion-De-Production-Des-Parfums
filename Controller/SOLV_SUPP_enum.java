@@ -1,0 +1,3 @@
+public enum SOLV_SUPP_enum {
+    ALCOOL_ETHYLIQUE, HUILE, EAU_DISTILLEE;
+}
