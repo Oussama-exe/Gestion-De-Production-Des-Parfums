@@ -1,4 +1,3 @@
 public enum Paiement {
-    CARTE_BANQUAIRE, PAYPAL, VISA;
-    // ajouter espece!
+    CARTE_BANQUAIRE, PAYPAL, VISA, ESPECE;
 }

@@ -2,8 +2,8 @@ public class Solvant_Support extends Ingredient implements SOLV_SUPP_inter{
     private SOLV_SUPP_enum type;
 
     //Constructeurs
-    public Solvant_Support(String nom, double quantite, Qualite qualite, boolean disponibilite, SOLV_SUPP_enum type){
-        super(nom, quantite, qualite, disponibilite);
+    public Solvant_Support(String nom, double quantite, boolean disponibilite, SOLV_SUPP_enum type){
+        super(nom, quantite, disponibilite);
         this.type = type;
     }
     //Methods
@@ -11,35 +11,11 @@ public class Solvant_Support extends Ingredient implements SOLV_SUPP_inter{
     public double calcul_prix(){
         switch(this.type){
             case ALCOOL_ETHYLIQUE:
-                switch(this.qualite){
-                    case MAUVAISE:
-                        return prix = (this.quantite + QUALITE_MAUVAISE)*ALCOOL_ETHYLIQUE_PAR_GRAMME;
-                    case NORMALE:
-                        return prix = (this.quantite + QUALITE_NORMALE)*ALCOOL_ETHYLIQUE_PAR_GRAMME;
-                    case BONNE:
-                        return prix = (this.quantite + QUALITE_BONNE)*ALCOOL_ETHYLIQUE_PAR_GRAMME;
-                }
-                break;
+                return prix = (this.quantite)*ALCOOL_ETHYLIQUE_PAR_GRAMME;
             case HUILE:
-                switch(this.qualite){
-                    case MAUVAISE:
-                        return prix = (this.quantite + QUALITE_MAUVAISE)*HUILE_PAR_GRAMME;
-                    case NORMALE:
-                        return prix = (this.quantite + QUALITE_NORMALE)*HUILE_PAR_GRAMME;
-                    case BONNE:
-                        return prix = (this.quantite + QUALITE_BONNE)*HUILE_PAR_GRAMME;
-                }
-                break;
+                return prix = (this.quantite)*HUILE_PAR_GRAMME;
             case EAU_DISTILLEE:
-                switch(this.qualite){
-                    case MAUVAISE:
-                        return prix = (this.quantite + QUALITE_MAUVAISE)*EAU_DISTILLEE_PAR_GRAMME;
-                    case NORMALE:
-                        return prix = (this.quantite + QUALITE_NORMALE)*EAU_DISTILLEE_PAR_GRAMME;
-                    case BONNE:
-                        return prix = (this.quantite + QUALITE_BONNE)*EAU_DISTILLEE_PAR_GRAMME;
-                }
-                break;
+                return prix = (this.quantite)*EAU_DISTILLEE_PAR_GRAMME;
         }
         return -1.0;
     }
