@@ -1,4 +1,0 @@
-public enum MPN_enum{
-    FLORAL, BOISEE, AGRUME, EPICE, RESINE_BAUME, RACINE_MOUSSE,
-    ANIMAL;
-}

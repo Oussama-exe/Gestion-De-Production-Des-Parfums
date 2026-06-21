@@ -1,3 +1,0 @@
-public enum FIX_enum {
-    RESINES_NATURELLE, MUSCS_SYNTHESE, AMBRE;
-}

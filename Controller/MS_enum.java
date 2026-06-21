@@ -1,3 +1,0 @@
-public enum MS_enum {
-    MUSCS_SYNTHETIQUE, ALDEHYDE, CETONE, MOLECULES_ESOLES;
-}
