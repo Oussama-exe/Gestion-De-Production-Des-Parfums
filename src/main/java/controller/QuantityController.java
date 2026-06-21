@@ -8,8 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import com.example.osmar.SceneManager;
 import com.example.osmar.Session;
-import com.example.osmar.SignUpDraft;
-import model.Ingredient;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,16 +15,10 @@ import java.util.ResourceBundle;
 /**
  * Controller for QuantityView.fxml.
  *
- * DESIGN NOTE: Commande has no "bottle size" / total-quantity field
- * anywhere in the model or the commande table — only individual
- * Ingredient.quantite exists. In the absence of a dedicated field,
- * this controller interprets "choose a quantity" as: split the
- * chosen total (in grams, using the ml value as a stand-in since
- * there's no density conversion anywhere in the model either) evenly
- * across whatever ingredients are already in the cart. This is an
- * assumption, not something derived from your schema — revisit if
- * you actually want quantity to mean something else (e.g. add a
- * real `volume_ml` column to `commande` instead).
+ * Sets the chosen bottle size (ml) directly on Commande.quantite —
+ * this is the order's overall volume, separate from each
+ * Ingredient.quantite (grams of that ingredient in the recipe,
+ * tracked individually in ingredients_cmd).
  */
 public class QuantityController implements Initializable {
 
@@ -53,6 +45,10 @@ public class QuantityController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (Session.getCurrentCommande() != null && Session.getCurrentCommande().getQuantite() > 0) {
+            quantitySlider.setValue(Session.getCurrentCommande().getQuantite());
+        }
+
         quantitySlider.valueProperty().addListener((obs, oldVal, newVal) ->
                 updateDisplay(newVal.intValue()));
 
@@ -82,14 +78,7 @@ public class QuantityController implements Initializable {
             return;
         }
 
-        var ingredients = Session.getCurrentCommande().getElementsCmd();
-        if (!ingredients.isEmpty()) {
-            double totalMl = quantitySlider.getValue();
-            double perIngredient = totalMl / ingredients.size();
-            for (Ingredient ingredient : ingredients) {
-                ingredient.setQuantite(perIngredient);
-            }
-        }
+        Session.getCurrentCommande().setQuantite(quantitySlider.getValue());
 
         SceneManager.switchTo("/view/fxml/CompositionSummaryView.fxml");
     }

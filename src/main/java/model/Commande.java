@@ -9,6 +9,7 @@ public class Commande {
     private int id_client;
     private Set<Ingredient> elements_cmd;
     private double montant_total;
+    private double quantite;
     private LocalDate date_cmd;
     private LocalDate date_livraison;
 
@@ -28,6 +29,7 @@ public class Commande {
         this.id_client = cmd.id_client;
         this.elements_cmd = new HashSet<>();
         this.elements_cmd.addAll(cmd.elements_cmd);
+        this.quantite = cmd.quantite;
         this.date_cmd = cmd.date_cmd;
         this.date_livraison = cmd.date_livraison;
     }
@@ -37,6 +39,7 @@ public class Commande {
     public int getIdClient() { return id_client; }
     public Set<Ingredient> getElementsCmd() { return elements_cmd; }
     public double getMontantTotal() { return montant_total; }
+    public double getQuantite() { return quantite; }
     public LocalDate getDateCmd() { return date_cmd; }
     public LocalDate getDateLivraison() { return date_livraison; }
 
@@ -45,6 +48,7 @@ public class Commande {
     public void setIdClient(int id_client) { this.id_client = id_client; }
     public void setElementsCmd(Set<Ingredient> elemCmd) { this.elements_cmd.addAll(elemCmd); }
     public void setMontantTotal(double montant_tt) { this.montant_total = montant_tt; }
+    public void setQuantite(double quantite) { this.quantite = quantite; }
     public void setDateCmd(LocalDate date_cmd) { this.date_cmd = date_cmd; }
     public void setDateLivraison(LocalDate date_liv) { this.date_livraison = date_liv; }
 

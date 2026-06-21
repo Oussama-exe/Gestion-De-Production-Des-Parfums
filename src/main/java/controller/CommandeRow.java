@@ -29,7 +29,8 @@ public class CommandeRow {
                 commande.getDateCmd() != null ? commande.getDateCmd().format(DATE_FORMAT) : "—");
         this.parfum = new SimpleStringProperty(
                 commande.getElementsCmd().size() + " ingrédient(s)");
-        this.quantite = new SimpleStringProperty(String.valueOf(commande.getElementsCmd().size()));
+        this.quantite = new SimpleStringProperty(
+                String.format("%.0f ml", commande.getQuantite()));
         this.total = new SimpleStringProperty(String.format("%.2f€", commande.getMontantTotal()));
         this.statut = new SimpleStringProperty(
                 commande.getDateLivraison() != null && commande.getDateLivraison().isBefore(java.time.LocalDate.now())

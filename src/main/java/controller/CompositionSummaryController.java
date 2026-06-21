@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import com.example.osmar.SceneManager;
 import com.example.osmar.Session;
-import com.example.osmar.SignUpDraft;
 import model.Ingredient;
 
 import java.net.URL;
@@ -62,10 +61,10 @@ public class CompositionSummaryController implements Initializable {
         }
 
         var ingredients = Session.getCurrentCommande().getElementsCmd();
-        double totalMl = ingredients.stream().mapToDouble(Ingredient::getQuantite).sum();
+        double bottleMl = Session.getCurrentCommande().getQuantite();
 
         summaryCaptionText.setText(String.format("%.0f ml · %d essence%s sélectionnée%s",
-                totalMl, ingredients.size(),
+                bottleMl, ingredients.size(),
                 ingredients.size() == 1 ? "" : "s",
                 ingredients.size() == 1 ? "" : "s"));
 
