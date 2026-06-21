@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<!--
+  ============================================================
+  CART  ("maCMD" / "présentation...")
+  ============================================================
+  Side-panel / drawer listing the items currently in the order
+  (ing1..ing4 in the diagram). Each row can be removed via the
+  "x" button. "Confirmer ma cmd" proceeds to Quantity selection.
+-->
+<AnchorPane fx:id="rootPane" prefHeight="800.0" prefWidth="420.0"
+            styleClass="root-pane"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CartController">
+
+    <VBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" spacing="0.0">
+
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <padding>
+                <Insets top="32.0" bottom="20.0" left="32.0" right="32.0"/>
+            </padding>
+            <VBox spacing="4.0">
+                <Text styleClass="subtitle" text="V O T R E   S É L E C T I O N"/>
+                <Text styleClass="section-title" text="Ma Commande"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="closeButton" text="✕" styleClass="btn-icon-circle"
+                    prefWidth="36.0" prefHeight="36.0" minWidth="36.0" minHeight="36.0"
+                    maxWidth="36.0" maxHeight="36.0"/>
+        </HBox>
+
+        <!-- Cart items — populated dynamically by CartController from
+             Session.getCurrentCommande().getElementsCmd() -->
+        <ScrollPane fitToWidth="true" styleClass="clean-scroll" VBox.vgrow="ALWAYS">
+            <VBox fx:id="cartRowsContainer" spacing="14.0">
+                <padding>
+                    <Insets left="32.0" right="32.0" bottom="20.0"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+
+        <!-- Footer / summary -->
+        <VBox spacing="16.0" styleClass="soft-panel">
+            <padding>
+                <Insets top="22.0" bottom="26.0" left="28.0" right="28.0"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT">
+                <Text styleClass="body-text" text="Sous-total"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Text fx:id="subtotalText" styleClass="body-text" text="0€" style="-fx-font-weight:bold;"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+                <Text styleClass="caption-text" text="Articles"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Text fx:id="articleCountText" styleClass="caption-text" text="0 essence"/>
+            </HBox>
+
+            <Button fx:id="confirmButton" text="Confirmer ma commande" styleClass="btn-primary"
+                    maxWidth="Infinity" prefHeight="50.0"/>
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>

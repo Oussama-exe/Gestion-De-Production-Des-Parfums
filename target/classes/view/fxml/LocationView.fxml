@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<!--
+  ============================================================
+  LOCATION SELECTION  ("choisir localisation")
+  ============================================================
+  Map placeholder for pin-drop selection, plus a manual address
+  field ("saisir localisation" in the diagram), then "Suivant"
+  to reach the final Confirmation screen.
+-->
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0"
+            styleClass="root-pane"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.LocationController">
+
+    <VBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" alignment="CENTER" spacing="0.0">
+
+        <VBox alignment="CENTER" maxWidth="640.0" spacing="0.0">
+
+            <!-- Step indicator -->
+            <HBox alignment="CENTER" spacing="8.0">
+                <Region styleClass="step-dot-active"/>
+                <Region styleClass="step-line" prefWidth="24.0"/>
+                <Region styleClass="step-dot-active"/>
+                <Region styleClass="step-line" prefWidth="24.0"/>
+                <Region styleClass="step-dot-active"/>
+                <Region styleClass="step-line" prefWidth="24.0"/>
+                <Region styleClass="step-dot-active"/>
+                <Region styleClass="step-line" prefWidth="24.0"/>
+                <Region styleClass="step-dot-active"/>
+            </HBox>
+
+            <VBox alignment="CENTER" spacing="8.0">
+                <padding>
+                    <Insets top="22.0" bottom="26.0"/>
+                </padding>
+                <Text styleClass="subtitle" text="É T A P E   6"/>
+                <Text styleClass="section-title" text="Adresse de livraison"/>
+                <Text styleClass="caption-text" text="Indiquez où nous devons livrer votre création"/>
+            </VBox>
+
+            <!-- Map placeholder -->
+            <StackPane styleClass="map-placeholder" prefHeight="280.0" maxWidth="640.0">
+                <Text text="📍" style="-fx-font-size: 46px;"/>
+                <VBox alignment="BOTTOM_CENTER" StackPane.alignment="BOTTOM_CENTER">
+                    <padding>
+                        <Insets bottom="16.0"/>
+                    </padding>
+                    <Text styleClass="caption-text" text="Faites glisser le repère pour ajuster votre position"/>
+                </VBox>
+            </StackPane>
+
+            <!-- Manual address entry -->
+            <VBox spacing="18.0" maxWidth="560.0">
+                <padding>
+                    <Insets top="26.0"/>
+                </padding>
+
+                <VBox spacing="8.0" styleClass="location-pin-card">
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Text text="🏠" style="-fx-font-size: 16px;"/>
+                        <TextField fx:id="addressField" styleClass="input-field"
+                                   promptText="Saisir une adresse manuellement…"
+                                   style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </VBox>
+
+                <HBox spacing="12.0">
+                    <Button fx:id="useGpsButton" text="📡 Utiliser ma position" styleClass="btn-secondary"/>
+                    <Button fx:id="savedAddressButton" text="Adresses enregistrées" styleClass="btn-ghost"/>
+                </HBox>
+
+            </VBox>
+
+            <Button fx:id="nextButton" text="Suivant" styleClass="btn-primary"
+                    maxWidth="Infinity" prefHeight="50.0">
+                <VBox.margin>
+                    <Insets top="30.0"/>
+                </VBox.margin>
+            </Button>
+
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>
