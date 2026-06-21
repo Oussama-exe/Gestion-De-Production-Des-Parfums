@@ -31,11 +31,15 @@
     <VBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" spacing="0.0">
 
-        <!-- Header: title, search bar, cart button -->
+        <!-- Header: back button, title, search bar, cart button -->
         <HBox alignment="CENTER_LEFT" spacing="20.0">
             <padding>
                 <Insets top="32.0" bottom="20.0" left="48.0" right="48.0"/>
             </padding>
+
+            <Button fx:id="backButton" text="‹" styleClass="btn-icon-circle"
+                    prefWidth="42.0" prefHeight="42.0" minWidth="42.0" minHeight="42.0"
+                    maxWidth="42.0" maxHeight="42.0" style="-fx-font-size: 18px;"/>
 
             <VBox spacing="4.0">
                 <Text styleClass="subtitle" text="C A T A L O G U E"/>

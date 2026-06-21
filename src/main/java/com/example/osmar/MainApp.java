@@ -24,7 +24,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        stage.setTitle("Essence — Maison de Parfum");
+        stage.setTitle("OSMAR — Maison de Parfum");
         stage.setMinWidth(960);
         stage.setMinHeight(640);
 

@@ -69,15 +69,8 @@ public class CompositionSummaryController implements Initializable {
                 ingredients.size() == 1 ? "" : "s"));
 
         for (Ingredient ingredient : ingredients) {
-            HBox row = IngredientCardFactory.buildSummaryRow(ingredient, this::handleRemove);
+            HBox row = IngredientCardFactory.buildSummaryRow(ingredient);
             ingredientRowsContainer.getChildren().add(row);
         }
-    }
-
-    private void handleRemove(Ingredient ingredient) {
-        if (Session.getCurrentCommande() != null) {
-            Session.getCurrentCommande().getElementsCmd().remove(ingredient);
-        }
-        renderSummary();
     }
 }

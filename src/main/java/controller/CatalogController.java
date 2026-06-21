@@ -16,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import com.example.osmar.SceneManager;
 import com.example.osmar.Session;
-import com.example.osmar.SignUpDraft;
 import model.Ingredient;
 
 import java.net.URL;
@@ -38,6 +37,9 @@ public class CatalogController implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private TextField searchField;
@@ -74,6 +76,8 @@ public class CatalogController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadAllIngredients();
+
+        backButton.setOnAction(e -> SceneManager.switchTo("/view/fxml/HomeView.fxml"));
 
         catAllButton.setOnAction(e -> setActiveFilter("ALL", catAllButton));
         catNaturelleButton.setOnAction(e -> setActiveFilter("NATURELLE", catNaturelleButton));

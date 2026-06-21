@@ -30,7 +30,7 @@ final class IngredientCardFactory {
     /** A reasonable single emoji per ingredient family, purely decorative. */
     static String emojiFor(Ingredient ingredient) {
         if (ingredient instanceof Fixateur) {
-            return "🧪";
+            return "💠";
         }
         if (ingredient instanceof Matiere_Premiere_naturelle) {
             return "🌸";
@@ -128,6 +128,7 @@ final class IngredientCardFactory {
         imageFrame.getStyleClass().add("product-image-frame");
         imageFrame.setPrefSize(52.0, 52.0);
         imageFrame.setMaxSize(52.0, 52.0);
+        imageFrame.setStyle("-fx-background-radius: 12px 12px 0 0;");
         Text emoji = new Text(emojiFor(ingredient));
         emoji.setStyle("-fx-font-size: 20px;");
         imageFrame.getChildren().add(emoji);
@@ -135,7 +136,7 @@ final class IngredientCardFactory {
         VBox texts = new VBox(3.0);
         Text name = new Text(ingredient.getNom());
         name.getStyleClass().add("cart-row-name");
-        Text meta = new Text(typeLabelFor(ingredient) + " · " + ingredient.getQuantite() + " g");
+        Text meta = new Text(typeLabelFor(ingredient));
         meta.getStyleClass().add("cart-row-meta");
         texts.getChildren().addAll(name, meta);
 
@@ -147,6 +148,9 @@ final class IngredientCardFactory {
 
         Button remove = new Button("✕");
         remove.getStyleClass().add("btn-danger-mini");
+        remove.setPrefSize(26.0, 26.0);
+        remove.setMinSize(26.0, 26.0);
+        remove.setMaxSize(26.0, 26.0);
         remove.setOnAction(e -> onRemove.accept(ingredient));
 
         row.getChildren().addAll(imageFrame, texts, spacer, price, remove);
@@ -155,10 +159,12 @@ final class IngredientCardFactory {
     }
 
     /**
-     * Builds one row for the CompositionSummary list — simpler than the
-     * cart row (no price shown there, just name/family + a remove button).
+     * Builds one row for the CompositionSummary list — just the icon
+     * and name/family, no price, no remove control. Removing an
+     * ingredient at this stage is done via "Modifier" (back to
+     * Catalog) instead.
      */
-    static HBox buildSummaryRow(Ingredient ingredient, java.util.function.Consumer<Ingredient> onRemove) {
+    static HBox buildSummaryRow(Ingredient ingredient) {
         HBox row = new HBox(14.0);
         row.getStyleClass().add("cart-row");
         row.setPadding(new Insets(13.0, 16.0, 13.0, 16.0));
@@ -177,15 +183,7 @@ final class IngredientCardFactory {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        Region qtyTrack = new Region();
-        qtyTrack.getStyleClass().add("qty-dot-track");
-        qtyTrack.setPrefSize(60.0, 6.0);
-
-        Button remove = new Button("✕");
-        remove.getStyleClass().add("btn-danger-mini");
-        remove.setOnAction(e -> onRemove.accept(ingredient));
-
-        row.getChildren().addAll(emoji, texts, spacer, qtyTrack, remove);
+        row.getChildren().addAll(emoji, texts, spacer);
 
         return row;
     }

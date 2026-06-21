@@ -25,7 +25,7 @@
         <VBox alignment="CENTER" maxWidth="440.0" spacing="0.0" styleClass="auth-card">
 
             <VBox alignment="CENTER" spacing="6.0">
-                <Text styleClass="subtitle" text="ESSENCE" />
+                <Text styleClass="subtitle" text="O S M A R" />
                 <Text styleClass="section-title" text="Content de vous revoir" />
                 <Text styleClass="caption-text" text="Connectez-vous pour continuer votre commande" />
             </VBox>
