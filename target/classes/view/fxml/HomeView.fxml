@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <!--
   ============================================================
@@ -19,84 +15,73 @@
   "Faire une Commande" (place an order) and "Voir mes historiques"
   (view order history).
 -->
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0"
-            styleClass="root-pane"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.HomeController">
 
-    <VBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
         <!-- Top navigation bar -->
         <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="topbar">
             <padding>
-                <Insets top="20.0" bottom="20.0" left="40.0" right="40.0"/>
+                <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
             </padding>
 
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <StackPane styleClass="logo-mark" prefWidth="40.0" prefHeight="40.0"
-                           maxWidth="40.0" maxHeight="40.0">
-                    <Text styleClass="logo-mark-text" text="E" style="-fx-font-size: 18px;"/>
+                <StackPane maxHeight="40.0" maxWidth="40.0" prefHeight="40.0" prefWidth="40.0" styleClass="logo-mark">
+                    <Text style="-fx-font-size: 18px;" styleClass="logo-mark-text" text="E" />
                 </StackPane>
-                <Text fx:id="greetingText" styleClass="brand-wordmark" text="Essence"/>
+                <Text fx:id="greetingText" styleClass="brand-wordmark" text="Essence" />
             </HBox>
 
-            <Region HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS" />
 
-            <Button fx:id="profileButton" styleClass="btn-icon-circle" prefWidth="42.0" prefHeight="42.0"/>
+            <Button fx:id="profileButton" prefHeight="42.0" prefWidth="42.0" styleClass="btn-icon-circle" />
         </HBox>
 
         <!-- Hero / About section -->
         <StackPane VBox.vgrow="ALWAYS">
 
-            <Circle styleClass="ambient-orb-one" radius="240" translateX="-400.0" translateY="-180.0"/>
-            <Circle styleClass="ambient-orb-two" radius="200" translateX="420.0" translateY="200.0"/>
+            <Circle radius="240" styleClass="ambient-orb-one" translateX="-400.0" translateY="-180.0" />
+            <Circle radius="200" styleClass="ambient-orb-two" translateX="420.0" translateY="200.0" />
 
-            <VBox alignment="CENTER" spacing="28.0" maxWidth="680.0">
+            <VBox alignment="CENTER" maxWidth="680.0" spacing="28.0">
 
                 <VBox alignment="CENTER" spacing="10.0">
-                    <Text styleClass="subtitle" text="À   P R O P O S   D ' E S S E N C E"/>
-                    <Text styleClass="display-title" textAlignment="CENTER" wrappingWidth="600.0"
-                          text="L'art de la parfumerie, façonné pour vous"/>
+                    <Text styleClass="subtitle" text="À   P R O P O S   D ' O S M A R" />
+                    <Text styleClass="display-title" text="L'art de la parfumerie, façonné pour vous" textAlignment="CENTER" wrappingWidth="600.0" />
                 </VBox>
 
-                <Region styleClass="gold-divider-short" minHeight="3.0" prefHeight="3.0"/>
+                <Region minHeight="3.0" prefHeight="3.0" styleClass="gold-divider-short" />
 
-                <Text styleClass="body-text" textAlignment="CENTER" wrappingWidth="560.0"
-                      text="Chez Essence, chaque flacon est composé selon vos envies : choisissez vos essences, dosez vos accords et suivez la fabrication artisanale de votre parfum, étape par étape."/>
+                <Text styleClass="body-text" text="Chez Essence, chaque flacon est composé selon vos envies : choisissez vos essences, dosez vos accords et suivez la fabrication artisanale de votre parfum, étape par étape." textAlignment="CENTER" wrappingWidth="560.0" />
 
                 <!-- How it works mini steps -->
                 <HBox alignment="CENTER" spacing="36.0">
                     <padding>
-                        <Insets top="10.0"/>
+                        <Insets top="10.0" />
                     </padding>
 
-                    <VBox alignment="CENTER" spacing="8.0" maxWidth="140.0">
-                        <Text styleClass="eyebrow" text="01"/>
-                        <Text styleClass="caption-text" textAlignment="CENTER" wrappingWidth="130.0"
-                              text="Choisissez vos essences"/>
+                    <VBox alignment="CENTER" maxWidth="140.0" spacing="8.0">
+                        <Text styleClass="eyebrow" text="01" />
+                        <Text styleClass="caption-text" text="Choisissez vos essences" textAlignment="CENTER" wrappingWidth="130.0" />
                     </VBox>
-                    <VBox alignment="CENTER" spacing="8.0" maxWidth="140.0">
-                        <Text styleClass="eyebrow" text="02"/>
-                        <Text styleClass="caption-text" textAlignment="CENTER" wrappingWidth="130.0"
-                              text="Composez votre flacon"/>
+                    <VBox alignment="CENTER" maxWidth="140.0" spacing="8.0">
+                        <Text styleClass="eyebrow" text="02" />
+                        <Text styleClass="caption-text" text="Composez votre flacon" textAlignment="CENTER" wrappingWidth="130.0" />
                     </VBox>
-                    <VBox alignment="CENTER" spacing="8.0" maxWidth="140.0">
-                        <Text styleClass="eyebrow" text="03"/>
-                        <Text styleClass="caption-text" textAlignment="CENTER" wrappingWidth="130.0"
-                              text="Recevez votre création"/>
+                    <VBox alignment="CENTER" maxWidth="140.0" spacing="8.0">
+                        <Text styleClass="eyebrow" text="03" />
+                        <Text styleClass="caption-text" text="Recevez votre création" textAlignment="CENTER" wrappingWidth="130.0" />
                     </VBox>
                 </HBox>
 
                 <!-- Primary actions -->
                 <HBox alignment="CENTER" spacing="18.0">
                     <padding>
-                        <Insets top="22.0"/>
+                        <Insets top="22.0" />
                     </padding>
-                    <Button fx:id="orderButton" text="Faire une Commande" styleClass="btn-primary"
-                            prefWidth="240.0" prefHeight="52.0"/>
-                    <Button fx:id="historyButton" text="Voir mes historiques" styleClass="btn-secondary"
-                            prefWidth="220.0" prefHeight="52.0"/>
+                    <Button fx:id="orderButton" prefHeight="52.0" prefWidth="240.0" styleClass="btn-primary" text="Faire une Commande" />
+                    <Button fx:id="historyButton" prefHeight="52.0" prefWidth="220.0" styleClass="btn-secondary" text="Voir mes historiques" />
                 </HBox>
 
             </VBox>

@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
 <!--
   ============================================================
@@ -21,73 +14,68 @@
   (email, pwd, confirmer pwd -> "créer mon compte"). Step 2
   collects nom/prénom (see SignUpStepTwoView.fxml).
 -->
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0"
-            styleClass="root-pane"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.SignUpStepOneController">
 
-    <StackPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
-               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0" styleClass="root-pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpStepOneController">
 
-        <Circle styleClass="ambient-orb-one" radius="200" translateX="420.0" translateY="270.0"/>
-        <Circle styleClass="ambient-orb-two" radius="180" translateX="-430.0" translateY="-260.0"/>
+    <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-        <VBox alignment="CENTER" styleClass="auth-card" maxWidth="460.0" spacing="0.0">
+        <Circle radius="200" styleClass="ambient-orb-one" translateX="420.0" translateY="270.0" />
+        <Circle radius="180" styleClass="ambient-orb-two" translateX="-430.0" translateY="-260.0" />
+
+        <VBox alignment="CENTER" maxWidth="460.0" spacing="0.0" styleClass="auth-card">
 
             <VBox alignment="CENTER" spacing="6.0">
-                <Text styleClass="subtitle" text="E S S E N C E"/>
-                <Text styleClass="section-title" text="Créer votre compte"/>
-                <Text styleClass="caption-text" text="Étape 1 sur 2 — identifiants de connexion"/>
+                <Text styleClass="subtitle" text="O S M A R" />
+                <Text styleClass="section-title" text="Créer votre compte" />
+                <Text styleClass="caption-text" text="Étape 1 sur 2 — identifiants de connexion" />
             </VBox>
 
             <!-- Step indicator -->
             <HBox alignment="CENTER" spacing="10.0">
                 <padding>
-                    <Insets top="22.0" bottom="6.0"/>
+                    <Insets bottom="6.0" top="22.0" />
                 </padding>
-                <Region styleClass="step-dot-active"/>
-                <Region styleClass="step-line" prefWidth="36.0"/>
-                <Region styleClass="step-dot"/>
+                <Region styleClass="step-dot-active" />
+                <Region prefWidth="36.0" styleClass="step-line" />
+                <Region styleClass="step-dot" />
             </HBox>
 
             <VBox spacing="18.0">
                 <padding>
-                    <Insets top="26.0"/>
+                    <Insets top="26.0" />
                 </padding>
 
                 <VBox spacing="8.0">
-                    <Label styleClass="field-label" text="ADRESSE E-MAIL"/>
-                    <TextField fx:id="emailField" styleClass="input-field" promptText="vous@exemple.com"/>
+                    <Label styleClass="field-label" text="ADRESSE E-MAIL" />
+                    <TextField fx:id="emailField" promptText="vous@exemple.com" styleClass="input-field" />
                 </VBox>
 
                 <VBox spacing="8.0">
-                    <Label styleClass="field-label" text="MOT DE PASSE"/>
-                    <PasswordField fx:id="pwdField" styleClass="input-password" promptText="8 caractères minimum"/>
+                    <Label styleClass="field-label" text="MOT DE PASSE" />
+                    <PasswordField fx:id="pwdField" promptText="8 caractères minimum" styleClass="input-password" />
                 </VBox>
 
                 <VBox spacing="8.0">
-                    <Label styleClass="field-label" text="CONFIRMER LE MOT DE PASSE"/>
-                    <PasswordField fx:id="confirmPwdField" styleClass="input-password" promptText="••••••••"/>
+                    <Label styleClass="field-label" text="CONFIRMER LE MOT DE PASSE" />
+                    <PasswordField fx:id="confirmPwdField" promptText="••••••••" styleClass="input-password" />
                 </VBox>
 
             </VBox>
 
             <VBox alignment="CENTER" spacing="16.0">
                 <padding>
-                    <Insets top="30.0"/>
+                    <Insets top="30.0" />
                 </padding>
-                <Text fx:id="errorText" styleClass="error-text" managed="false" visible="false"
-                      text="Les mots de passe ne correspondent pas."/>
-                <Button fx:id="createAccountButton" text="Créer mon compte" styleClass="btn-primary"
-                        maxWidth="Infinity" prefHeight="50.0"/>
+                <Text fx:id="errorText" managed="false" styleClass="error-text" text="Les mots de passe ne correspondent pas." visible="false" />
+                <Button fx:id="createAccountButton" maxWidth="Infinity" prefHeight="50.0" styleClass="btn-primary" text="Créer mon compte" />
             </VBox>
 
             <HBox alignment="CENTER" spacing="6.0">
                 <padding>
-                    <Insets top="22.0"/>
+                    <Insets top="22.0" />
                 </padding>
-                <Text styleClass="caption-text" text="Déjà membre ?"/>
-                <Label fx:id="loginLink" styleClass="link-text" text="Se connecter"/>
+                <Text styleClass="caption-text" text="Déjà membre ?" />
+                <Label fx:id="loginLink" styleClass="link-text" text="Se connecter" />
             </HBox>
 
         </VBox>
