@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<!--
+  ============================================================
+  CATALOG / ORDER PAGE  ("commandePage")
+  ============================================================
+  Product catalog with category chips (Cat1, Cat2, Cat3 in the
+  diagram — renamed to real perfume families), a search bar, a
+  responsive product grid, and a "Ma Commande" (cart) button
+  that opens the cart drawer (see CartView.fxml).
+-->
+<AnchorPane fx:id="rootPane" prefHeight="800.0" prefWidth="1280.0"
+            styleClass="root-pane"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CatalogController">
+
+    <VBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" spacing="0.0">
+
+        <!-- Header: title, search bar, cart button -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0">
+            <padding>
+                <Insets top="32.0" bottom="20.0" left="48.0" right="48.0"/>
+            </padding>
+
+            <VBox spacing="4.0">
+                <Text styleClass="subtitle" text="C A T A L O G U E"/>
+                <Text styleClass="section-title" text="Composez votre parfum"/>
+            </VBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <TextField fx:id="searchField" styleClass="search-field" promptText="Rechercher une essence, une note…"
+                       prefWidth="320.0"/>
+
+            <Button fx:id="cartButton" text="🛍  Ma Commande" styleClass="btn-secondary"/>
+        </HBox>
+
+        <!-- Category chip bar — filters by real ingredient type -->
+        <HBox alignment="CENTER_LEFT" spacing="12.0">
+            <padding>
+                <Insets bottom="24.0" left="48.0" right="48.0"/>
+            </padding>
+            <Button fx:id="catAllButton" text="Toutes" styleClass="category-chip-active"/>
+            <Button fx:id="catNaturelleButton" text="Matières naturelles" styleClass="category-chip"/>
+            <Button fx:id="catSynthetiqueButton" text="Matières synthétiques" styleClass="category-chip"/>
+            <Button fx:id="catFixateurButton" text="Fixateurs" styleClass="category-chip"/>
+            <Button fx:id="catSolvantButton" text="Solvants / Supports" styleClass="category-chip"/>
+        </HBox>
+
+        <!-- Product grid — populated dynamically by CatalogController
+             from the 4 ingredient DAOs. productGridContainer holds one
+             VBox section (eyebrow label + GridPane) per ingredient type,
+             built in Java; see CatalogController.renderProducts(). -->
+        <ScrollPane fitToWidth="true" styleClass="clean-scroll" VBox.vgrow="ALWAYS">
+            <VBox fx:id="productGridContainer">
+                <padding>
+                    <Insets left="48.0" right="48.0" bottom="40.0"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+
+    </VBox>
+
+</AnchorPane>

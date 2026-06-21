@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<!--
+  ============================================================
+  SIGN UP — STEP 2 / 2  (Personal information)
+  ============================================================
+  Corresponds to "nom / prenom -> suivant" boxes in the diagram.
+  Completes account creation, then proceeds to the verification
+  step / HomePage.
+-->
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0"
+            styleClass="root-pane"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.SignUpStepTwoController">
+
+    <StackPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+        <Circle styleClass="ambient-orb-one" radius="200" translateX="420.0" translateY="270.0"/>
+        <Circle styleClass="ambient-orb-two" radius="180" translateX="-430.0" translateY="-260.0"/>
+
+        <VBox alignment="CENTER" styleClass="auth-card" maxWidth="460.0" spacing="0.0">
+
+            <VBox alignment="CENTER" spacing="6.0">
+                <Text styleClass="subtitle" text="E S S E N C E"/>
+                <Text styleClass="section-title" text="Parlez-nous de vous"/>
+                <Text styleClass="caption-text" text="Étape 2 sur 2 — informations personnelles"/>
+            </VBox>
+
+            <!-- Step indicator -->
+            <HBox alignment="CENTER" spacing="10.0">
+                <padding>
+                    <Insets top="22.0" bottom="6.0"/>
+                </padding>
+                <Region styleClass="step-dot-active"/>
+                <Region styleClass="step-line" prefWidth="36.0"/>
+                <Region styleClass="step-dot-active"/>
+            </HBox>
+
+            <VBox spacing="18.0">
+                <padding>
+                    <Insets top="26.0"/>
+                </padding>
+
+                <VBox spacing="8.0">
+                    <Label styleClass="field-label" text="NOM"/>
+                    <TextField fx:id="nomField" styleClass="input-field" promptText="Votre nom de famille"/>
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <Label styleClass="field-label" text="PRÉNOM"/>
+                    <TextField fx:id="prenomField" styleClass="input-field" promptText="Votre prénom"/>
+                </VBox>
+
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="16.0">
+                <padding>
+                    <Insets top="34.0"/>
+                </padding>
+                <Button fx:id="nextButton" text="Suivant" styleClass="btn-primary"
+                        maxWidth="Infinity" prefHeight="50.0"/>
+                <Button fx:id="backButton" text="Retour" styleClass="btn-ghost"/>
+            </VBox>
+
+        </VBox>
+
+    </StackPane>
+
+</AnchorPane>

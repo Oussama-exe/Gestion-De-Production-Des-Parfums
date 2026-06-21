@@ -1,0 +1,754 @@
+/* ============================================================
+   ESSENCE — Global Theme Stylesheet
+   Artisanal Perfume Production — Soft Elegant / Cream & Rose-Gold
+   ============================================================
+
+   NOTE ON ANIMATIONS:
+   A few rules below use the CSS `transition:` property (e.g. on
+   .btn-primary, .btn-icon-circle, .elegant-slider .thumb) to make
+   hover scale effects glide instead of snapping instantly.
+   This requires JavaFX 23+ (CSS Transitions, JDK-8311895) — the
+   pom.xml in this project is already pinned to javafx 23.0.2.
+   On JavaFX 21/22 these `transition` lines are simply ignored and
+   the hover states still apply, just without the smooth glide.
+   Bigger entrance/exit animations (fades, slides) are done in Java
+   with Timeline/FadeTransition/TranslateTransition in the relevant
+   controllers — see WelcomeController for a working example.
+   ============================================================ */
+
+* {
+    /* ---- Color tokens ---- */
+    -ivory: #FBF7F1;
+    -ivory-deep: #F4ECE2;
+    -card: #FFFFFF;
+    -espresso: #2B2420;
+    -espresso-soft: #5B5048;
+    -taupe: #8B6F5C;
+    -taupe-light: #BFA797;
+    -rose-gold: #C9A77C;
+    -rose-gold-dark: #B08D5F;
+    -rose-gold-light: #E4D2B8;
+    -blush: #E8B4B8;
+    -blush-soft: #F3D9DB;
+    -line: #E7DCCE;
+    -shadow: rgba(43, 36, 32, 0.12);
+    -success: #8FAE8B;
+    -error: #C97B7B;
+
+    -fx-font-family: "Lato";
+}
+
+/* ============================================================
+   ROOT / BACKDROP
+   ============================================================ */
+
+.root-pane {
+    -fx-background-color: linear-gradient(to bottom right, #FBF7F1, #F4ECE2);
+}
+
+.scene-shell {
+    -fx-background-color: transparent;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+
+.display-title {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+.section-title {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+.subtitle {
+    -fx-font-family: "Lato";
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-text-fill: -taupe;
+}
+
+.body-text {
+    -fx-font-family: "Lato";
+    -fx-font-size: 14px;
+    -fx-text-fill: -espresso-soft;
+}
+
+.eyebrow {
+    -fx-font-family: "Lato";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -rose-gold-dark;
+}
+
+.brand-wordmark {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+.caption-text {
+    -fx-font-family: "Lato";
+    -fx-font-size: 12px;
+    -fx-text-fill: -taupe;
+}
+
+.link-text {
+    -fx-font-family: "Lato";
+    -fx-font-size: 13px;
+    -fx-text-fill: -rose-gold-dark;
+    -fx-underline: false;
+    -fx-cursor: hand;
+}
+.link-text:hover {
+    -fx-text-fill: -espresso;
+    -fx-underline: true;
+}
+
+.error-text {
+    -fx-font-family: "Lato";
+    -fx-font-size: 12px;
+    -fx-text-fill: -error;
+}
+
+/* ============================================================
+   GOLD DIVIDER (signature element)
+   ============================================================ */
+
+.gold-divider {
+    -fx-background-color: linear-gradient(to right, transparent, -rose-gold, transparent);
+    -fx-pref-height: 2px;
+    -fx-max-height: 2px;
+}
+
+.gold-divider-short {
+    -fx-background-color: -rose-gold;
+    -fx-pref-height: 3px;
+    -fx-max-height: 3px;
+    -fx-pref-width: 56px;
+    -fx-max-width: 56px;
+    -fx-background-radius: 2px;
+}
+
+/* ============================================================
+   CARDS / PANELS
+   ============================================================ */
+
+.glass-card {
+    -fx-background-color: -card;
+    -fx-background-radius: 24px;
+    -fx-effect: dropshadow(gaussian, -shadow, 24, 0.15, 0, 8);
+}
+
+.auth-card {
+    -fx-background-color: -card;
+    -fx-background-radius: 28px;
+    -fx-padding: 48px 44px;
+    -fx-effect: dropshadow(gaussian, -shadow, 30, 0.18, 0, 10);
+}
+
+.soft-panel {
+    -fx-background-color: -ivory-deep;
+    -fx-background-radius: 20px;
+}
+
+.sidebar-panel {
+    -fx-background-color: -espresso;
+    -fx-background-radius: 0px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, -rose-gold, -rose-gold-dark);
+    -fx-text-fill: white;
+    -fx-font-family: "Lato";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30px;
+    -fx-padding: 14px 36px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(176,141,95,0.35), 16, 0.2, 0, 6);
+    transition: -fx-scale-x 0.18s ease-out, -fx-scale-y 0.18s ease-out;
+}
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, -rose-gold-dark, -rose-gold-dark);
+    -fx-effect: dropshadow(gaussian, rgba(176,141,95,0.5), 20, 0.3, 0, 8);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+.btn-primary:armed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.btn-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: -espresso;
+    -fx-font-family: "Lato";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30px;
+    -fx-border-color: -taupe-light;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 30px;
+    -fx-padding: 13px 34px;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover {
+    -fx-border-color: -rose-gold-dark;
+    -fx-text-fill: -rose-gold-dark;
+    -fx-background-color: -ivory-deep;
+}
+
+.btn-ghost {
+    -fx-background-color: transparent;
+    -fx-text-fill: -taupe;
+    -fx-font-family: "Lato";
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px 18px;
+}
+.btn-ghost:hover {
+    -fx-text-fill: -espresso;
+    -fx-background-color: rgba(201,167,124,0.12);
+}
+
+.btn-icon-circle {
+    -fx-background-color: -ivory-deep;
+    -fx-background-radius: 50%;
+    -fx-min-width: 42px;
+    -fx-min-height: 42px;
+    -fx-max-width: 42px;
+    -fx-max-height: 42px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -shadow, 8, 0.1, 0, 3);
+    transition: -fx-scale-x 0.18s ease-out, -fx-scale-y 0.18s ease-out;
+}
+.btn-icon-circle:hover {
+    -fx-background-color: -blush-soft;
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+}
+
+.btn-danger-mini {
+    -fx-background-color: transparent;
+    -fx-text-fill: -error;
+    -fx-font-family: "Lato";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-radius: 50%;
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-width: 26px;
+    -fx-max-height: 26px;
+}
+.btn-danger-mini:hover {
+    -fx-background-color: rgba(201,123,123,0.15);
+}
+
+.btn-pill-select {
+    -fx-background-color: -ivory-deep;
+    -fx-text-fill: -espresso-soft;
+    -fx-font-family: "Lato";
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px 22px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 20px;
+}
+.btn-pill-select:hover {
+    -fx-border-color: -rose-gold;
+}
+.btn-pill-select-active {
+    -fx-background-color: -espresso;
+    -fx-text-fill: -ivory;
+    -fx-font-family: "Lato";
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px 22px;
+    -fx-cursor: hand;
+}
+
+/* ============================================================
+   TEXT FIELDS / PASSWORD FIELDS
+   ============================================================ */
+
+.input-field, .input-password {
+    -fx-background-color: -ivory-deep;
+    -fx-background-radius: 14px;
+    -fx-text-fill: -espresso;
+    -fx-font-family: "Lato";
+    -fx-font-size: 13.5px;
+    -fx-padding: 14px 18px;
+    -fx-prompt-text-fill: -taupe-light;
+    -fx-border-color: transparent;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 14px;
+}
+.input-field:focused, .input-password:focused {
+    -fx-border-color: -rose-gold;
+    -fx-background-color: -card;
+    -fx-effect: dropshadow(gaussian, rgba(201,167,124,0.25), 10, 0.2, 0, 0);
+}
+
+.field-label {
+    -fx-font-family: "Lato";
+    -fx-font-size: 11.5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -taupe;
+}
+
+.search-field {
+    -fx-background-color: -card;
+    -fx-background-radius: 24px;
+    -fx-text-fill: -espresso;
+    -fx-font-family: "Lato";
+    -fx-font-size: 13.5px;
+    -fx-padding: 13px 22px;
+    -fx-prompt-text-fill: -taupe-light;
+    -fx-border-color: -line;
+    -fx-border-width: 1px;
+    -fx-border-radius: 24px;
+    -fx-effect: dropshadow(gaussian, -shadow, 10, 0.08, 0, 3);
+}
+.search-field:focused {
+    -fx-border-color: -rose-gold;
+}
+
+/* ============================================================
+   NAV / SIDEBAR
+   ============================================================ */
+
+.nav-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(251,247,241,0.65);
+    -fx-font-family: "Lato";
+    -fx-font-size: 13.5px;
+    -fx-font-weight: 600;
+    -fx-padding: 13px 22px;
+    -fx-background-radius: 14px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-graphic-text-gap: 12px;
+}
+.nav-item:hover {
+    -fx-background-color: rgba(255,255,255,0.06);
+    -fx-text-fill: -ivory;
+}
+.nav-item-active {
+    -fx-background-color: rgba(201,167,124,0.18);
+    -fx-text-fill: -rose-gold-light;
+    -fx-font-family: "Lato";
+    -fx-font-size: 13.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 13px 22px;
+    -fx-background-radius: 14px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+    -fx-graphic-text-gap: 12px;
+}
+
+/* ============================================================
+   CATEGORY CHIPS
+   ============================================================ */
+
+.category-chip {
+    -fx-background-color: -card;
+    -fx-text-fill: -espresso-soft;
+    -fx-font-family: "Lato";
+    -fx-font-size: 12.5px;
+    -fx-font-weight: 600;
+    -fx-background-radius: 18px;
+    -fx-padding: 9px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -shadow, 6, 0.08, 0, 2);
+}
+.category-chip:hover {
+    -fx-text-fill: -rose-gold-dark;
+}
+.category-chip-active {
+    -fx-background-color: -espresso;
+    -fx-text-fill: -ivory;
+    -fx-font-family: "Lato";
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 18px;
+    -fx-padding: 9px 20px;
+    -fx-cursor: hand;
+}
+
+/* ============================================================
+   PRODUCT CARD
+   ============================================================ */
+
+.product-card {
+    -fx-background-color: -card;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -shadow, 14, 0.1, 0, 5);
+}
+.product-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(201,167,124,0.4), 22, 0.25, 0, 10);
+}
+
+.product-image-frame {
+    -fx-background-color: linear-gradient(to bottom, #F3E8DA, #ECDCC8);
+    -fx-background-radius: 18px 18px 0 0;
+}
+
+.product-name {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+.product-price {
+    -fx-font-family: "Lato";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -rose-gold-dark;
+}
+
+.product-tag {
+    -fx-background-color: -blush-soft;
+    -fx-text-fill: #9B5C61;
+    -fx-font-family: "Lato";
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-padding: 4px 10px;
+}
+
+/* ============================================================
+   CART / LIST ROWS
+   ============================================================ */
+
+.cart-row {
+    -fx-background-color: -ivory-deep;
+    -fx-background-radius: 16px;
+}
+
+.cart-row-name {
+    -fx-font-family: "Lato";
+    -fx-font-size: 13.5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+.cart-row-meta {
+    -fx-font-family: "Lato";
+    -fx-font-size: 11.5px;
+    -fx-text-fill: -taupe;
+}
+
+.qty-dot-track {
+    -fx-background-color: -line;
+    -fx-background-radius: 10px;
+}
+
+/* ============================================================
+   SCROLLBAR / SCROLLPANE
+   ============================================================ */
+
+.clean-scroll, .clean-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+.clean-scroll .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+.clean-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: -taupe-light;
+    -fx-background-radius: 8px;
+}
+.clean-scroll .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+.clean-scroll .scroll-bar .increment-button,
+.clean-scroll .scroll-bar .decrement-button {
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+    -fx-opacity: 0;
+}
+
+/* ============================================================
+   TABLEVIEW (Order History)
+   ============================================================ */
+
+.elegant-table {
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 0;
+}
+.elegant-table .column-header-background {
+    -fx-background-color: -espresso;
+    -fx-background-radius: 16px 16px 0 0;
+}
+.elegant-table .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 44px;
+}
+.elegant-table .column-header .label {
+    -fx-text-fill: -rose-gold-light;
+    -fx-font-family: "Lato";
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+.elegant-table .filler {
+    -fx-background-color: -espresso;
+}
+.elegant-table .table-row-cell {
+    -fx-background-color: -card;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: transparent transparent -line transparent;
+    -fx-padding: 6px 0;
+}
+.elegant-table .table-row-cell:odd {
+    -fx-background-color: -ivory-deep;
+}
+.elegant-table .table-row-cell:hover {
+    -fx-background-color: -blush-soft;
+}
+.elegant-table .table-row-cell:selected {
+    -fx-background-color: -rose-gold-light;
+}
+.elegant-table .table-cell {
+    -fx-text-fill: -espresso-soft;
+    -fx-font-family: "Lato";
+    -fx-font-size: 12.5px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 14px;
+}
+
+/* ============================================================
+   RADIO / TOGGLE (payment method)
+   ============================================================ */
+
+.payment-option {
+    -fx-background-color: -card;
+    -fx-background-radius: 16px;
+    -fx-padding: 18px 22px;
+    -fx-cursor: hand;
+    -fx-border-color: -line;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 16px;
+}
+.payment-option:hover {
+    -fx-border-color: -rose-gold-light;
+}
+.payment-option-selected {
+    -fx-background-color: -card;
+    -fx-background-radius: 16px;
+    -fx-padding: 18px 22px;
+    -fx-cursor: hand;
+    -fx-border-color: -rose-gold;
+    -fx-border-width: 2px;
+    -fx-border-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(201,167,124,0.3), 14, 0.2, 0, 4);
+}
+
+.payment-label {
+    -fx-font-family: "Lato";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+/* ============================================================
+   PROGRESS STEPPER (checkout flow)
+   ============================================================ */
+
+.step-dot {
+    -fx-background-color: -line;
+    -fx-background-radius: 50%;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+}
+.step-dot-active {
+    -fx-background-color: -rose-gold;
+    -fx-background-radius: 50%;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-max-width: 10px;
+    -fx-max-height: 10px;
+}
+.step-line {
+    -fx-background-color: -line;
+    -fx-pref-height: 2px;
+    -fx-max-height: 2px;
+}
+.step-label {
+    -fx-font-family: "Lato";
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -taupe;
+}
+.step-label-active {
+    -fx-font-family: "Lato";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -espresso;
+}
+
+/* ============================================================
+   SLIDER (quantity)
+   ============================================================ */
+
+.elegant-slider {
+    -fx-padding: 6px 0;
+}
+.elegant-slider .track {
+    -fx-background-color: -line;
+    -fx-background-radius: 4px;
+    -fx-pref-height: 5px;
+}
+.elegant-slider .thumb {
+    -fx-background-color: -rose-gold;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 22px;
+    -fx-pref-height: 22px;
+    -fx-effect: dropshadow(gaussian, rgba(201,167,124,0.5), 10, 0.3, 0, 2);
+    transition: -fx-scale-x 0.15s ease-out, -fx-scale-y 0.15s ease-out;
+}
+.elegant-slider .thumb:hover {
+    -fx-background-color: -rose-gold-dark;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.qty-stepper-btn {
+    -fx-background-color: -ivory-deep;
+    -fx-text-fill: -espresso;
+    -fx-font-family: "Lato";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-cursor: hand;
+}
+.qty-stepper-btn:hover {
+    -fx-background-color: -rose-gold-light;
+}
+
+/* ============================================================
+   AVATAR / CIRCLES
+   ============================================================ */
+
+.avatar-circle {
+    -fx-background-color: linear-gradient(to bottom right, -rose-gold-light, -blush);
+    -fx-background-radius: 50%;
+}
+
+.logo-mark {
+    -fx-background-color: linear-gradient(to bottom right, -rose-gold, -blush);
+    -fx-background-radius: 50%;
+    -fx-effect: dropshadow(gaussian, rgba(201,167,124,0.5), 16, 0.3, 0, 4);
+}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+
+.topbar {
+    -fx-background-color: rgba(255,255,255,0.55);
+    -fx-border-color: transparent transparent -line transparent;
+    -fx-border-width: 1px;
+}
+
+/* ============================================================
+   AMBIENT DECORATIVE ORBS (Welcome screen)
+   ============================================================ */
+
+.ambient-orb-one {
+    -fx-fill: linear-gradient(to bottom right, #E4D2B8, #F3D9DB);
+    -fx-opacity: 0.45;
+}
+
+.ambient-orb-two {
+    -fx-fill: linear-gradient(to bottom right, #C9A77C, #E8B4B8);
+    -fx-opacity: 0.35;
+}
+
+.logo-mark-text {
+    -fx-font-family: "Playfair Display";
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* ============================================================
+   SEPARATOR (or)
+   ============================================================ */
+
+.or-separator-line {
+    -fx-background-color: -line;
+    -fx-pref-height: 1px;
+    -fx-max-height: 1px;
+}
+
+/* ============================================================
+   MAP / LOCATION PLACEHOLDER
+   ============================================================ */
+
+.map-placeholder {
+    -fx-background-color: linear-gradient(to bottom right, #ECE3D4, #E4D2B8);
+    -fx-background-radius: 18px;
+}
+
+.location-pin-card {
+    -fx-background-color: -card;
+    -fx-background-radius: 16px;
+    -fx-padding: 14px 18px;
+    -fx-effect: dropshadow(gaussian, -shadow, 12, 0.12, 0, 4);
+    -fx-border-color: -line;
+    -fx-border-width: 1px;
+    -fx-border-radius: 16px;
+}
+
+/* ============================================================
+   SUCCESS CHECK / CONFIRMATION
+   ============================================================ */
+
+.success-circle {
+    -fx-background-color: linear-gradient(to bottom right, #A8C7A4, -success);
+    -fx-background-radius: 50%;
+    -fx-effect: dropshadow(gaussian, rgba(143,174,139,0.45), 30, 0.3, 0, 8);
+}
+
+.order-id-chip {
+    -fx-background-color: -ivory-deep;
+    -fx-background-radius: 12px;
+    -fx-padding: 8px 18px;
+}
+
+.order-id-text {
+    -fx-font-family: "Lato";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -rose-gold-dark;
+}

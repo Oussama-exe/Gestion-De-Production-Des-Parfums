@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Text?>
+
+<!--
+  ============================================================
+  LOGIN SCREEN
+  ============================================================
+  Email + password sign-in. Links to "SignIn" (account creation,
+  here used in the French sense of "S'inscrire") and a forgot
+  password affordance.
+-->
+<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1080.0"
+            styleClass="root-pane"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.LoginController">
+
+    <StackPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
+        <Circle styleClass="ambient-orb-one" radius="200" translateX="-420.0" translateY="280.0"/>
+        <Circle styleClass="ambient-orb-two" radius="180" translateX="430.0" translateY="-260.0"/>
+
+        <VBox alignment="CENTER" styleClass="auth-card" maxWidth="440.0" spacing="0.0">
+
+            <VBox alignment="CENTER" spacing="6.0">
+                <Text styleClass="subtitle" text="E S S E N C E"/>
+                <Text styleClass="section-title" text="Content de vous revoir"/>
+                <Text styleClass="caption-text" text="Connectez-vous pour continuer votre commande"/>
+            </VBox>
+
+            <VBox spacing="18.0">
+                <padding>
+                    <Insets top="34.0"/>
+                </padding>
+
+                <VBox spacing="8.0">
+                    <Label styleClass="field-label" text="ADRESSE E-MAIL"/>
+                    <TextField fx:id="emailField" styleClass="input-field" promptText="vous@exemple.com"/>
+                </VBox>
+
+                <VBox spacing="8.0">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label styleClass="field-label" text="MOT DE PASSE"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="forgotPasswordLink" styleClass="link-text" text="Mot de passe oublié ?"/>
+                    </HBox>
+                    <PasswordField fx:id="pwdField" styleClass="input-password" promptText="••••••••"/>
+                </VBox>
+
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="16.0">
+                <padding>
+                    <Insets top="30.0"/>
+                </padding>
+                <Text fx:id="errorText" styleClass="error-text" managed="false" visible="false"
+                      text="Email ou mot de passe incorrect."/>
+                <Button fx:id="loginButton" text="Se connecter" styleClass="btn-primary"
+                        maxWidth="Infinity" prefHeight="50.0"/>
+            </VBox>
+
+            <HBox alignment="CENTER" spacing="10.0">
+                <padding>
+                    <Insets top="22.0"/>
+                </padding>
+                <Region styleClass="or-separator-line" HBox.hgrow="ALWAYS"/>
+                <Text styleClass="caption-text" text="ou"/>
+                <Region styleClass="or-separator-line" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="6.0">
+                <padding>
+                    <Insets top="22.0"/>
+                </padding>
+                <Text styleClass="caption-text" text="Nouveau chez Essence ?"/>
+                <Label fx:id="createAccountLink" styleClass="link-text" text="Créer un compte"/>
+            </HBox>
+
+        </VBox>
+
+    </StackPane>
+
+</AnchorPane>
